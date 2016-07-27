@@ -16,19 +16,17 @@ class Main extends PluginBase implements Listener{
     $this->getServer()->getPluginManager()->registerEvents($this, $this);
     $this->registerBlock(self::OBSIDIAN, Obsidian::class);
   }
-  
-	public function registerBlock($id, $class){
-		Block::$list[$id] = $class;
-		$block = new $class();
-		for($data = 0; $data < 16; ++$data){
-			Block::$fullList[($id << 4) | $data] = new $class($data);
-		}
-		Block::$solid[$id] = $block->isSolid();
-		Block::$transparent[$id] = $block->isTransparent();
-		Block::$hardness[$id] = $block->getHardness();
-		Block::$resistance[$id] = $block->getResistance();
-		Block::$light[$id] = $block->getLightLevel();
-		Block::$lightFilter[$id] = 1;//
+  public function registerBlock($id, $class){
+    Block::$list[$id] = $class;
+    $block = new $class();
+    for($data = 0; $data < 16; ++$data){
+      Block::$fullList[($id << 4) | $data] = new $class($data);
+    }
+    Block::$solid[$id] = $block->isSolid();
+    Block::$transparent[$id] = $block->isTransparent();
+    Block::$hardness[$id] = $block->getHardness();
+    Block::$light[$id] = $block->getLightLevel();
+    Block::$lightFilter[$id] = 1;//
 	}
   
   public function onTap(PlayerInteractEvent $e){
