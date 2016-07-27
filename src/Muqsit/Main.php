@@ -6,13 +6,28 @@ use pocketmine\event\Listener;
 use pocketmine\plugin\PluginBase;
 use pocketmine\event\player\PlayerInteractEvent;
 use pocketmine\utils\TextFormat as TF;
+use Muqsit\Obsidian;
 
 class Main extends PluginBase implements Listener{
 
   public function onEnable(){
     $this->getServer()->getPluginManager()->registerEvents($this, $this);
-    Block::$list[Block::OBSIDIAN] = \Muqsit\Obsidian::class;
+    $this->registerBlock(self::OBSIDIAN, Obsidian::class);
   }
+  
+	public function registerBlock($id, $class){
+		Block::$list[$id] = $class;
+		$block = new $class();
+		for($data = 0; $data < 16; ++$data){
+			Block::$fullList[($id << 4) | $data] = new $class($data);
+		}
+		Block::$solid[$id] = $block->isSolid();
+		Block::$transparent[$id] = $block->isTransparent();
+		Block::$hardness[$id] = $block->getHardness();
+		Block::$resistance[$id] = $block->getResistance();
+		Block::$light[$id] = $block->getLightLevel();
+		Block::$lightFilter[$id] = 1;//
+	}
   
   public function onTap(PlayerInteractEvent $e){
     $p = $e->getPlayer();
