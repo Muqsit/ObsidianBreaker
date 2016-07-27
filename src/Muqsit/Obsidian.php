@@ -32,6 +32,10 @@ class Obsidian extends Solid{
 		return 10;
 	}
 
+	public function getResistance(){
+		return 10;
+	}
+	
 	public function getDrops(Item $item) : array {
 		if($item->isPickaxe() >= 5){
 			return [
