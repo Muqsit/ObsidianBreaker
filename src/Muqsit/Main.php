@@ -20,7 +20,6 @@ class Main extends PluginBase implements Listener{
     if($p->getInventory()->getItemInHand()->getId() === 392 && $block->getId() === 49){
       $h = $block->getHardness();
       
-      /*
       if($h >= 37.5){
         $mt_h = 4;
       }elseif($h >= 25 && < 37.5){
@@ -32,7 +31,6 @@ class Main extends PluginBase implements Listener{
       }else{
         $mt_h = 4;
       }
-      */
       
       $p->sendMessage(TF::LIGHT_PURPLE . "Durability of this block is " . TF::WHITE . $mt_h . "/4");
     }
