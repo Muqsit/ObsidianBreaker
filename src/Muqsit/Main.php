@@ -37,11 +37,11 @@ class Main extends PluginBase implements Listener{
       
       if($h >= 37.5){
         $mt_h = 4;
-      }elseif($h >= 25 && < 37.5){
+      }elseif($h >= 25 && $h < 37.5){
         $mt_h = 3;
-      }elseif($h >= 12.5 && < 25){
+      }elseif($h >= 12.5 && $h < 25){
         $mt_h = 2;
-      }elseif($h >= 1 && < 12.5){
+      }elseif($h >= 1 && $h < 12.5){
         $mt_h = 1;
       }else{
         $mt_h = 4;
