@@ -11,6 +11,7 @@ class Main extends PluginBase implements Listener{
 
   public function onEnable(){
     $this->getServer()->getPluginManager()->registerEvents($this, $this);
+    Block::$list[Block::OBSIDIAN] = \Muqsit\Obsidian::class;
   }
   
   public function onTap(PlayerInteractEvent $e){
