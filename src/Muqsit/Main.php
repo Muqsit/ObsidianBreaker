@@ -10,6 +10,8 @@ use Muqsit\Obsidian;
 
 class Main extends PluginBase implements Listener{
 
+  const OBSIDIAN = 49;
+
   public function onEnable(){
     $this->getServer()->getPluginManager()->registerEvents($this, $this);
     $this->registerBlock(self::OBSIDIAN, Obsidian::class);
